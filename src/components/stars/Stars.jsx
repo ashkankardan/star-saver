@@ -5,8 +5,9 @@ import { useFavoriteContext } from "../../contexts/FavoriteContext";
 import StarItem from "./StarItem";
 import Spinner from "../spinner/Spinner";
 import Sort from "../sort/Sort";
-import { Pagination } from "../pagination/Pagination";
 import useWindowSize from "../../hooks/useWindowSize";
+import usePagination from "../../hooks/usePagination";
+import { Pagination } from "../pagination/Pagination";
 
 const Stars = () => {
   const [sortBy, setSortBy] = useState("All");
@@ -19,10 +20,12 @@ const Stars = () => {
     favoriteState: { favorite },
   } = useFavoriteContext();
 
+  const {page, setPage, toDisplay, totalCount, totalPerPage} = usePagination(data, favorite, sortBy)
+
   const windowSize = useWindowSize();
 
   useEffect(() => {
-    console.log("windowSize", windowSize);
+    console.log("windowSize from comp", windowSize);
   }, [windowSize]);
 
   // useEffect(() => {
@@ -30,54 +33,54 @@ const Stars = () => {
   // }, []);
 
   // ------------
-  const [page, setPage] = useState(1);
-  const [toDisplay, setToDisplay] = useState();
-  const [totalCount, setTotalCount] = useState(1);
-  const [totalPerPage, setTotalPerPage] = useState(3);
+  // const [page, setPage] = useState(1);
+  // const [toDisplay, setToDisplay] = useState();
+  // const [totalCount, setTotalCount] = useState(1);
+  // const [totalPerPage, setTotalPerPage] = useState(3);
 
-  useEffect(()=>{
-    setTotalPerPage(windowSize)
-  }, [windowSize])
+  // useEffect(()=>{
+  //   setTotalPerPage(windowSize)
+  // }, [windowSize])
 
-  useEffect(() => {
-    if (!data) return;
+  // useEffect(() => {
+  //   if (!data) return;
 
-    const startIndex = totalPerPage * (page - 1);
-    const endIndex = totalPerPage * page;
+  //   const startIndex = totalPerPage * (page - 1);
+  //   const endIndex = totalPerPage * page;
 
-    if (sortBy === "Favorite") {
-      setToDisplay(favorite.slice(startIndex, endIndex));
-      setTotalCount(favorite.length);
-    } else {
-      setToDisplay(data.slice(startIndex, endIndex));
-    }
-  }, [data, favorite, sortBy, page, totalPerPage]);
+  //   if (sortBy === "Favorite") {
+  //     setToDisplay(favorite.slice(startIndex, endIndex));
+  //     setTotalCount(favorite.length);
+  //   } else {
+  //     setToDisplay(data.slice(startIndex, endIndex));
+  //   }
+  // }, [data, favorite, sortBy, page, totalPerPage]);
 
-  useEffect(() => {
-    if (!data) return;
-    if (sortBy === "Favorite") {
-      setTotalCount(favorite.length);
-      setPage(1);
-    } else {
-      setTotalCount(data.length);
-      setPage(1);
-    }
+  // useEffect(() => {
+  //   if (!data) return;
+  //   if (sortBy === "Favorite") {
+  //     setTotalCount(favorite.length);
+  //     setPage(1);
+  //   } else {
+  //     setTotalCount(data.length);
+  //     setPage(1);
+  //   }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortBy, data]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [sortBy, data]);
 
-  useEffect(() => {
-    if (Math.ceil(totalCount / totalPerPage) < page) {
-      setPage(page - 1);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalCount]);
+  // useEffect(() => {
+  //   if (Math.ceil(totalCount / totalPerPage) < page) {
+  //     setPage(page - 1);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [totalCount]);
 
-  useEffect(() => {
-    console.log("toDisplay", toDisplay);
-    console.log("data", data);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toDisplay]);
+  // useEffect(() => {
+  //   console.log("toDisplay", toDisplay);
+  //   console.log("data", data);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [toDisplay]);
 
   return (
     <>
