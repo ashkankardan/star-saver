@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import useWindowSize from "./useWindowSize";
 
-const usePagination = (data, favorite, sortedData, sortedFavorite, filterBy, sortBy) => {
+const usePagination = (
+  data,
+  favorite,
+  sortedData,
+  sortedFavorite,
+  filterBy,
+  sortBy
+) => {
   const [page, setPage] = useState(1);
   const [toDisplay, setToDisplay] = useState();
   const [totalCount, setTotalCount] = useState(1);

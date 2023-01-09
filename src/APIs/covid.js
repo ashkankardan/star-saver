@@ -23,7 +23,7 @@ const covid = {
     } catch (error) {
       return error;
     }
-  }
+  },
 };
 
 export default covid;

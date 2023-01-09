@@ -11,7 +11,7 @@ const DataContextProvider = ({ children }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (!!data) return
+    if (!!data) return;
     Axios.all([starwars.getPeople(), people.getPeople()]).then(
       Axios.spread((...allData) => {
         const starwarsData = allData[0];

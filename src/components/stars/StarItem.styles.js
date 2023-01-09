@@ -12,8 +12,8 @@ export const MainContainer = styled.div`
   transition: 0.6s ease;
 
   @media (max-width: 540px) {
-  max-width: 400px;
-  margin: auto;
+    max-width: 400px;
+    margin: auto;
   }
 
   &:hover {

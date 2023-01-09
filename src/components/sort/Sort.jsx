@@ -18,7 +18,6 @@ const Sort = ({ sortBy, setSortBy }) => {
   const dropdownRef = useRef();
 
   useEffect(() => {
-    // if(!isOpen) return
     const handleToggleDropdown = (e) => {
       if (!dropdownRef.current.contains(e.target)) {
         setIsOpen(false);

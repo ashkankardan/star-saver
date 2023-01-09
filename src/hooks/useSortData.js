@@ -5,7 +5,7 @@ const useSortData = (data, favorite, sortBy) => {
   const [sortedFavorite, setSortedFavorite] = useState();
 
   useEffect(() => {
-    if ((!data, !favorite)) return;
+    if (!data || !favorite) return;
 
     if (sortBy === "Mass (High to Low)") {
       setSortedData(data.sort((a, b) => b.mass - a.mass));
