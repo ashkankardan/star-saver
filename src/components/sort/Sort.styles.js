@@ -7,7 +7,6 @@ export const MainContainer = styled.div`
   align-items: center;
   color: #ddd;
   margin-top: 0;
-  transform: translateY(-20px);
   font-size: 15px;
 
   @media (min-width: 441px) {
@@ -52,12 +51,12 @@ export const DropdownList = styled.div`
   text-align: left;
   padding: 5px 10px;
   box-sizing: border-box;
-  top: 35px;
+  top: 105px;
   border-radius: 5px;
-  box-shadow: rgba(250, 250, 250, 0.5) 0px 0px 5px;
+  box-shadow: rgba(250, 250, 250, 0.5) 0px 0px 3px;
 
   @media (max-width: 440px) {
-    top: 45px;
+    top: 145px;
   }
 `;
 

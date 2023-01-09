@@ -5,6 +5,7 @@ import {
   NoResultTitle,
   OptionsRow,
   Options,
+  TopRow,
 } from "./Stars.styles";
 import { useDataContext } from "../../contexts/DataContext";
 import { useFavoriteContext } from "../../contexts/FavoriteContext";
@@ -15,10 +16,12 @@ import Sort from "../sort/Sort";
 import useSortData from "../../hooks/useSortData";
 import usePagination from "../../hooks/usePagination";
 import { Pagination } from "../pagination/Pagination";
+import Search from "../search/Search";
 
 const Stars = () => {
   const [filterBy, setFilterBy] = useState("All");
   const [sortBy, setSortBy] = useState("Mass (Low to High)");
+  const [searchedValue, setSearchedValue] = useState("");
 
   const {
     dataState: { data },
@@ -36,19 +39,26 @@ const Stars = () => {
     sortedData,
     sortedFavorite,
     filterBy,
-    sortBy
+    sortBy,
+    searchedValue
   );
 
   return (
     <>
       {toDisplay ? (
         <>
-          <OptionsRow>
-            <Options>
-              <Filter filterBy={filterBy} setFilterBy={setFilterBy} />
-              <Sort sortBy={sortBy} setSortBy={setSortBy} />
-            </Options>
-          </OptionsRow>
+          <TopRow>
+            <Search
+              searchedValue={searchedValue}
+              setSearchedValue={setSearchedValue}
+            />
+            <OptionsRow>
+              <Options>
+                <Filter filterBy={filterBy} setFilterBy={setFilterBy} />
+                <Sort sortBy={sortBy} setSortBy={setSortBy} />
+              </Options>
+            </OptionsRow>
+          </TopRow>
           <MainContainer>
             {toDisplay.map((item) => {
               return <StarItem key={item.id} character={item} />;
@@ -60,6 +70,7 @@ const Stars = () => {
               setPage={setPage}
               totalCount={totalCount}
               totalPerPage={totalPerPage}
+              searchedValue={searchedValue}
             />
           )}
         </>

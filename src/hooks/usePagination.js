@@ -7,7 +7,8 @@ const usePagination = (
   sortedData,
   sortedFavorite,
   filterBy,
-  sortBy
+  sortBy,
+  searchedValue
 ) => {
   const [page, setPage] = useState(1);
   const [toDisplay, setToDisplay] = useState();
@@ -27,20 +28,49 @@ const usePagination = (
     const endIndex = totalPerPage * page;
 
     if (filterBy === "Favorite") {
-      setToDisplay(sortedFavorite.slice(startIndex, endIndex));
-      setTotalCount(sortedFavorite.length);
+      const searched = sortedFavorite.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchedValue.toLowerCase()) ||
+          item.character.toLowerCase().includes(searchedValue.toLowerCase())
+      );
+      setToDisplay(searched.slice(startIndex, endIndex));
+      setTotalCount(searched.length);
     } else {
-      setToDisplay(sortedData.slice(startIndex, endIndex));
+      const searched = sortedData.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchedValue.toLowerCase()) ||
+          item.character.toLowerCase().includes(searchedValue.toLowerCase())
+      );
+      setToDisplay(searched.slice(startIndex, endIndex));
+      setTotalCount(searched.length);
     }
-  }, [sortedData, sortedFavorite, filterBy, page, totalPerPage, sortBy]);
+  }, [
+    sortedData,
+    sortedFavorite,
+    filterBy,
+    page,
+    totalPerPage,
+    sortBy,
+    searchedValue,
+  ]);
 
   useEffect(() => {
     if (!sortedData) return;
     if (filterBy === "Favorite") {
-      setTotalCount(sortedFavorite.length);
+      const searched = sortedFavorite.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchedValue.toLowerCase()) ||
+          item.character.toLowerCase().includes(searchedValue.toLowerCase())
+      );
+      setTotalCount(searched.length);
       setPage(1);
     } else {
-      setTotalCount(sortedData.length);
+      const searched = sortedData.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchedValue.toLowerCase()) ||
+          item.character.toLowerCase().includes(searchedValue.toLowerCase())
+      );
+      setTotalCount(searched.length);
       setPage(1);
     }
 
@@ -51,8 +81,9 @@ const usePagination = (
     if (Math.ceil(totalCount / totalPerPage) < page) {
       setPage(page - 1);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalCount]);
+  }, [totalCount, searchedValue, toDisplay]);
 
   return { page, setPage, toDisplay, totalCount, totalPerPage };
 };
