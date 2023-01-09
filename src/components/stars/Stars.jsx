@@ -64,7 +64,9 @@ const Stars = () => {
           )}
         </>
       ) : (
-        <Spinner />
+        <NoResult>
+          <Spinner />
+        </NoResult>
       )}
 
       {filterBy === "Favorite" && favorite.length < 1 && (

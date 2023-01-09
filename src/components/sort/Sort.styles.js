@@ -9,7 +9,10 @@ export const MainContainer = styled.div`
   margin-top: 0;
   transform: translateY(-20px);
   font-size: 15px;
-  margin-left: 20px;
+
+  @media (min-width: 441px) {
+    margin-left: 15px;
+  }
 `;
 
 export const Label = styled.div``;
@@ -26,10 +29,15 @@ export const DropdownTop = styled.div`
   box-sizing: border-box;
   border-radius: 5px;
   cursor: pointer;
+
+  @media (max-width: 440px) {
+    margin-top: 10px;
+  }
 `;
 
 export const DropdownIcon = styled.div`
   transform: translateY(2px);
+  z-index: -1;
 `;
 
 export const Selected = styled.div``;
@@ -46,8 +54,11 @@ export const DropdownList = styled.div`
   box-sizing: border-box;
   top: 35px;
   border-radius: 5px;
-  box-shadow: rgba(250, 250, 250, 0.3) 0px 0px 5px;
-  z-index: 1000;
+  box-shadow: rgba(250, 250, 250, 0.5) 0px 0px 5px;
+
+  @media (max-width: 440px) {
+    top: 45px;
+  }
 `;
 
 export const SortValue = styled.div`
