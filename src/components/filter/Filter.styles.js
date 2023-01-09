@@ -9,14 +9,14 @@ export const MainContainer = styled.div`
   margin-top: 0;
   transform: translateY(-20px);
   font-size: 15px;
-  margin-left: 20px;
+  text-transform: capitalize;
 `;
 
 export const Label = styled.div``;
 
 export const DropdownTop = styled.div`
   position: relative;
-  width: 180px;
+  width: 120px;
   margin-left: 10px;
   border: 1px solid darkgray;
   display: flex;
@@ -36,7 +36,7 @@ export const Selected = styled.div``;
 
 export const DropdownList = styled.div`
   position: absolute;
-  width: 180px;
+  width: 120px;
   background: darkgray;
   color: black;
   font-size: 14px;
@@ -50,7 +50,7 @@ export const DropdownList = styled.div`
   z-index: 1000;
 `;
 
-export const SortValue = styled.div`
+export const FilterValue = styled.div`
   height: 20px;
   cursor: pointer;
 `;

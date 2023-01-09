@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useWindowSize from "./useWindowSize";
 
-const usePagination = (data, favorite, sortBy) => {
+const usePagination = (data, favorite, sortedData, sortedFavorite, filterBy, sortBy) => {
   const [page, setPage] = useState(1);
   const [toDisplay, setToDisplay] = useState();
   const [totalCount, setTotalCount] = useState(1);
@@ -14,31 +14,31 @@ const usePagination = (data, favorite, sortBy) => {
   }, [windowSize]);
 
   useEffect(() => {
-    if (!data) return;
+    if (!sortedData) return;
 
     const startIndex = totalPerPage * (page - 1);
     const endIndex = totalPerPage * page;
 
-    if (sortBy === "Favorite") {
-      setToDisplay(favorite.slice(startIndex, endIndex));
-      setTotalCount(favorite.length);
+    if (filterBy === "Favorite") {
+      setToDisplay(sortedFavorite.slice(startIndex, endIndex));
+      setTotalCount(sortedFavorite.length);
     } else {
-      setToDisplay(data.slice(startIndex, endIndex));
+      setToDisplay(sortedData.slice(startIndex, endIndex));
     }
-  }, [data, favorite, sortBy, page, totalPerPage]);
+  }, [sortedData, sortedFavorite, filterBy, page, totalPerPage, sortBy]);
 
   useEffect(() => {
-    if (!data) return;
-    if (sortBy === "Favorite") {
-      setTotalCount(favorite.length);
+    if (!sortedData) return;
+    if (filterBy === "Favorite") {
+      setTotalCount(sortedFavorite.length);
       setPage(1);
     } else {
-      setTotalCount(data.length);
+      setTotalCount(sortedData.length);
       setPage(1);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortBy, data]);
+  }, [filterBy, sortedData, sortBy]);
 
   useEffect(() => {
     if (Math.ceil(totalCount / totalPerPage) < page) {
