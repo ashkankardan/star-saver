@@ -12,7 +12,7 @@ Starwars characters and their (***FAKE***) contact info
 
 ## Live Demo
 
-Try the application live at [https://codesandbox.io/s/competent-booth-k0pgov?file=/src/index.js)
+Try the application live at https://codesandbox.io/s/competent-booth-k0pgov?file=/src/index.js
 
 ### Getting Started
 
