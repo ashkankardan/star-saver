@@ -14,9 +14,17 @@ export const MainContainer = styled.div`
   }
 `;
 
+export const TopRow = styled.div`
+  transform: translateY(-20px);
+`;
+
 export const OptionsRow = styled.div`
   display: flex;
   justify-content: end;
+
+  @media (min-width: 441px) and (max-width: 540px) {
+    justify-content: center;
+  }
 `;
 
 export const Options = styled.div`

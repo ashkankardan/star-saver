@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, MainContainer, PageNumber } from "./Pagination.styles";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
-export const Pagination = ({ page, setPage, totalCount, totalPerPage }) => {
+export const Pagination = ({
+  page,
+  setPage,
+  totalCount,
+  totalPerPage,
+  searchedValue,
+}) => {
   const handlePrev = () => {
     if (page - 1 !== 0) {
       setPage(page - 1);
@@ -14,6 +20,13 @@ export const Pagination = ({ page, setPage, totalCount, totalPerPage }) => {
       setPage(page + 1);
     }
   };
+
+  useEffect(() => {
+    setPage(1);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchedValue]);
+
   return (
     <MainContainer>
       <Button onClick={handlePrev}>
