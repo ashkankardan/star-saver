@@ -4,9 +4,11 @@ Starwars characters and their (***FAKE***) contact info
 
 ## Features
 
-- User can view list of contacts
+- User can view the list of contacts
 - User can add/remove favorites
 - User can filter by All/Favorite
+- User can sort by Mass
+- User can search by Name and Character
 
 ## Live Demo
 
