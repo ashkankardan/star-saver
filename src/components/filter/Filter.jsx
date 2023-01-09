@@ -6,14 +6,14 @@ import {
   Label,
   MainContainer,
   Selected,
-  SortValue,
-} from "./Sort.styles";
+  FilterValue,
+} from "./Filter.styles";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
-const Sort = ({ sortBy, setSortBy }) => {
+const Filter = ({ filterBy, setFilterBy }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const sortValues = ["Mass (Low to High)", "Mass (High to Low)"];
+  const filterValues = ["All", "Favorite"];
 
   const dropdownRef = useRef();
 
@@ -32,20 +32,20 @@ const Sort = ({ sortBy, setSortBy }) => {
 
   return (
     <MainContainer>
-      <Label>Sort:</Label>
+      <Label>Filter:</Label>
       <DropdownTop onClick={() => setIsOpen(!isOpen)} ref={dropdownRef}>
-        <Selected>{sortBy}</Selected>
+        <Selected>{filterBy}</Selected>
         <DropdownIcon>
           {isOpen ? <AiFillCaretDown /> : <AiFillCaretUp />}
         </DropdownIcon>
       </DropdownTop>
       {isOpen && (
         <DropdownList>
-          {sortValues.map((value, i) => {
+          {filterValues.map((value, i) => {
             return (
-              <SortValue key={i} onClick={() => setSortBy(value)}>
+              <FilterValue key={i} onClick={() => setFilterBy(value)}>
                 {value}
-              </SortValue>
+              </FilterValue>
             );
           })}
         </DropdownList>
@@ -54,4 +54,4 @@ const Sort = ({ sortBy, setSortBy }) => {
   );
 };
 
-export default Sort;
+export default Filter;
