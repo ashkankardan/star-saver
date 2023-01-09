@@ -10,7 +10,7 @@ const people = {
     } catch (error) {
       return error;
     }
-  }
+  },
 };
 
 export default people;

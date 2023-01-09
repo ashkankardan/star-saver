@@ -18,7 +18,6 @@ const Filter = ({ filterBy, setFilterBy }) => {
   const dropdownRef = useRef();
 
   useEffect(() => {
-    // if(!isOpen) return
     const handleToggleDropdown = (e) => {
       if (!dropdownRef.current.contains(e.target)) {
         setIsOpen(false);

@@ -24,7 +24,7 @@ const starwars = {
     } catch (error) {
       return error;
     }
-  }
+  },
 };
 
 export default starwars;

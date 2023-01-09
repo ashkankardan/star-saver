@@ -23,7 +23,7 @@ const cats = {
     } catch (error) {
       return error;
     }
-  }
+  },
 };
 
 export default cats;

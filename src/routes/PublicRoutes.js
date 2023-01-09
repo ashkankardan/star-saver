@@ -8,8 +8,6 @@ const PublicRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
-
-        {/* <Route path="*"><PageNotFound /></Route> */}
       </Routes>
     </BrowserRouter>
   );
