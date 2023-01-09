@@ -15,11 +15,11 @@ const Filter = ({ filterBy, setFilterBy }) => {
 
   const filterValues = ["All", "Favorite"];
 
-  const dropdownRef = useRef();
+  const FilterDropdownRef = useRef();
 
   useEffect(() => {
     const handleToggleDropdown = (e) => {
-      if (!dropdownRef.current.contains(e.target)) {
+      if (!FilterDropdownRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
@@ -32,7 +32,7 @@ const Filter = ({ filterBy, setFilterBy }) => {
   return (
     <MainContainer>
       <Label>Filter:</Label>
-      <DropdownTop onClick={() => setIsOpen(!isOpen)} ref={dropdownRef}>
+      <DropdownTop onClick={() => setIsOpen(!isOpen)} ref={FilterDropdownRef}>
         <Selected>{filterBy}</Selected>
         <DropdownIcon>
           {isOpen ? <AiFillCaretDown /> : <AiFillCaretUp />}

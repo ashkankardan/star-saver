@@ -21,12 +21,17 @@ export const OptionsRow = styled.div`
 
 export const Options = styled.div`
   display: flex;
+
+  @media (max-width: 440px) {
+    flex-direction: column;
+  }
 `;
 
 export const NoResult = styled.div`
-  width: 100;
+  width: 100%;
   margin: auto;
   margin-top: 50px;
+  text-align: center;
 `;
 
 export const NoResultTitle = styled.div`

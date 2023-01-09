@@ -15,11 +15,11 @@ const Sort = ({ sortBy, setSortBy }) => {
 
   const sortValues = ["Mass (Low to High)", "Mass (High to Low)"];
 
-  const dropdownRef = useRef();
+  const sortDropdownRef = useRef();
 
   useEffect(() => {
     const handleToggleDropdown = (e) => {
-      if (!dropdownRef.current.contains(e.target)) {
+      if (!sortDropdownRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
@@ -32,7 +32,7 @@ const Sort = ({ sortBy, setSortBy }) => {
   return (
     <MainContainer>
       <Label>Sort:</Label>
-      <DropdownTop onClick={() => setIsOpen(!isOpen)} ref={dropdownRef}>
+      <DropdownTop onClick={() => setIsOpen(!isOpen)} ref={sortDropdownRef}>
         <Selected>{sortBy}</Selected>
         <DropdownIcon>
           {isOpen ? <AiFillCaretDown /> : <AiFillCaretUp />}

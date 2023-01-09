@@ -9,7 +9,10 @@ export const MainContainer = styled.div`
 `;
 
 export const Title = styled.h1`
+  width: 251px;
+  margin: auto;
   color: #ddd;
   font-family: fantasy;
   letter-spacing: 10px;
+  transform: translateX(5px);
 `;
