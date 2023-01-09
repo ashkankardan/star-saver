@@ -1,6 +1,6 @@
 # Star Saver
 
-Starwars characters and the (***FAKE***) contact info
+Starwars characters and their (***FAKE***) contact info
 
 ## Features
 
